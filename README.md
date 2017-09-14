@@ -37,6 +37,13 @@ TODO
 git clone https://github.com/brettwold/pi-tube.git
 ```
 
+### Ensure you have a reasonably new version of node
+
+```
+curl -sL https://deb.nodesource.com/setup_6.x | sudo -E bash -
+sudo apt-get install -y nodejs
+```
+
 ### Install all node libraries
 
 ```
