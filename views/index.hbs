@@ -1,0 +1,32 @@
+<h1>{{title}}</h1>
+<p>Welcome to {{title}}</p>
+
+<form action="/addstream" method="post">
+  <input type="text" name="id" placeholder="stream id"></input>
+  <input type="text" name="name" placeholder="name"></input>
+  <button>Add</button>
+</form>
+
+<h2>Streams</h2>
+<a href="/streamstop">Stop All</a>
+
+<table>
+  <tr><th>Id</th><th>Name</th><th>Status</th><th>Actions</th></tr>
+{{#each streams as |value key|}}
+  <tr>
+    <td>{{value.id}}</td>
+    <td>{{value.name}}</td>
+    <td>
+      {{#if value.playing}}
+        Playing
+      {{else}}
+        Stopped
+      {{/if}}
+    </td>
+    <td>
+      <a href="/stream/{{value.id}}">Play</a>
+      <a href="/removestream/{{value.id}}">Delete</a>
+    </td>
+  </tr>
+{{/each}}
+</table>
