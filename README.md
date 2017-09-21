@@ -1,8 +1,12 @@
 # pi-tube
 
-A simple streaming tool
+A simple streaming tool to stream video from a RaspberryPi to YouTube.
 
-## Setup and installation
+This application is a simple web server application that will allow you to setup any number of stream events matching events in your YouTube live_dashboard. All you need is the event ID. Once you have entered the event ids you can then use the web interface to stop and start the streams.
+
+> Note: only one stream should be active at a time!
+
+## Setup and installation manually (the hard way)
 
 ### Setup camera
 
@@ -55,3 +59,8 @@ npm install
 ```
 npm run dev
 ```
+This will start a node express server running on port 8080 of your RaspberryPi so switch to your browser and have a look.
+
+## Optionally install piTube script in init.d
+
+In this repo you'll find a piTube file. This can be placed in the /etc/init.d folder and used to start the web service on boot (instructions in the file).

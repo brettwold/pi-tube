@@ -1,0 +1,40 @@
+#! /bin/sh
+# /etc/init.d/piTube
+
+### BEGIN INIT INFO
+# Provides:          piTube
+# Required-Start:    $remote_fs $syslog
+# Required-Stop:     $remote_fs $syslog
+# Default-Start:     2 3 4 5
+# Default-Stop:
+# Short-Description: piTube
+# Description:       This file should be placed in /etc/init.d folder and made executable
+#                    > sudo chmod +x /etc/init.d/piTube
+#                    Then add to boot services using
+#                    > sudo update-rc.d piTube defaults
+#                    Then reboot and piTube should fire up on boot
+### END INIT INFO
+
+# Carry out specific functions when asked to by the system
+case "$1" in
+   start)
+    echo "Starting pi-tube"
+    # run application you want to start
+    #node /home/pi/test.js > /home/pi/test.log
+    cd /home/pi/pi-tube
+    npm run dev >> /home/pi/pi-tube/test.log
+   ;;
+   stop)
+    echo "Stopping pi-tube"
+    # kill application you want to stop
+    killall -9 node
+    # Not a great approach for running
+    # multiple node instances
+    ;;
+  *)
+    echo "Usage: /etc/init.d/piTube {start|stop}"
+    exit 1
+    ;;
+esac
+
+exit 0
